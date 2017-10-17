@@ -3,8 +3,10 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7.
 
 ## Development server
-
-Run `npm start` for a dev server. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
+   ## Steps to run the project
+    1.) You must have node installed in your system. If not please install latest version of node js.
+    2.) Run `npm install` that will download all the project dependencies.
+    3.) Run `npm start` for a dev server. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
