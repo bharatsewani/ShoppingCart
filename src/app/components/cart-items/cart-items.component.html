@@ -1,0 +1,147 @@
+<div class="row card-header">
+  <h3 class="pull-left">
+    YOUR SHOPPING BAG
+  </h3>
+  <div class="pull-right visible-xs no-of-items">{{products ? products.length:0}} Items</div>
+</div>
+<div class="table-responsive section-cart-items" *ngIf="products">
+  <div class="table table-cart-items">
+    <div class="row table-header hidden-xs">
+      <div class="col-xs-6">{{products ? products.length:0}} Items</div>
+      <div class="col-xs-2">SIZE</div>
+      <div class="col-xs-2">QTY</div>
+      <div class="col-xs-2">PRICE</div>
+    </div>
+    <div class="table-contents">
+      <div class="row product" *ngFor="let p of products ; let i = index;">
+        <div class="col-sm-3 col-xs-6 align-center">
+          <img src="../../../assets/images/T{{i+1}}.jpg">
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="row">
+            <div class="item-desc">{{p.p_variation}} {{p.p_name}}</div>
+            <div class="item-style">Style: {{p.p_style}}</div>
+            <div class="item-color"> Color : {{p.p_selected_color.name}}</div>
+            <div class="links hidden-xs"> <a (click)="openModal(template, p, i)">EDIT</a> | <a> X Remove </a> | <a> SAVE FOR LATER </a></div>
+          </div>
+        </div>
+        <div class="col-sm-2 hidden-xs">
+          {{p.p_selected_size.code}}
+        </div>
+        <div class="col-sm-2 hidden-xs">
+          {{p.p_quantity}}
+        </div>
+        <div class="col-sm-2 hidden-xs">
+          {{p.p_price | currency:'USD':true:'1.2-2'}}
+        </div>
+        <div class="links links-xs col-xs-12 visible-xs align-center"> <a (click)="openModal(template, p, i)">EDIT</a> | <a> X Remove </a> | <a> SAVE FOR LATER </a></div>
+      </div>
+    </div>
+  </div>
+  <div class="row section-items-bill" *ngIf="products">
+    <div class="col-sm-3 hidden-xs">
+      <ul class="section-help">
+        <li>
+          Need help or have questions?
+        </li>
+        <li>
+          Call Customer Service at 1-800-555-5555
+        </li>
+        <li>
+          <a> Chat with any of our stylists </a>
+        </li>
+        <li>
+          <a> See return and exchange policies </a>
+        </li>
+      </ul>
+    </div>
+    <div class=" col-xs-12 col-sm-7 col-sm-offset-2 align-right amount-section">
+      <div class="row section-apply-coupan">
+        <div class="col-sm-6 col-xs-10">
+          ENTER PROMOTION CODE OR GIFT CARD
+        </div>
+        <div class="col-sm-6 col-xs-12 align-right promtion-code-entry">
+          <input type="text" class="txtApplyCoupan" />
+          <input type="button" value="APPLY" class="btn btn-primary btn-apply" />
+        </div>
+      </div>
+      <div class="row section-total">
+        <div class="row section-subtotal">
+          <div class="col-xs-6">
+            SUBTOTAL
+          </div>
+          <div class="col-xs-6 align-right">
+            {{ this.getSubTotal() | currency:'USD':true:'1.2-2' }}
+          </div>
+        </div>
+        <div class="row section-promocode">
+          <div class="col-xs-6">
+            PROMOTION CODE JF10 APPLIED
+          </div>
+          <div class="col-xs-6 align-right">
+            {{ this.getDiscount() | currency:'USD':true:'1.2-2'}}
+          </div>
+        </div>
+        <div class="row section-estimated-total">
+          <div class="col-xs-6">
+            ESTIMATED TOTAL
+          </div>
+          <div class="col-xs-6 align-right">
+            {{(totalAmount-discount) | currency:'USD':true:'1.2-2'}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row align-right checkout-section" *ngIf="products">
+    <!--<div class="row pull-right">
+      <div class="col-sm-2"><a>CONTINUE SHOPPING</a></div>
+       <div class="col-sm-2"><input type="button" value="CHECKOUT" class="btn btn-primary btn-checkout" /></div>
+    </div>-->
+    <div class="row">
+      <div class="col-sm-6 col-sm-push-6 col-md-6 col-md-push-6 divCheckout">
+        <input type="button" value="CHECKOUT" class="btn btn-primary btn-checkout" />
+      </div>
+      <div class="col-sm-6 col-sm-pull-6 col-md-6 col-md-pull-1 divContShopping">
+        <a>CONTINUE SHOPPING</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12"> <img src="../../../assets/images/lock.jpg"> Secure checkout. Shopping is always safe and secure</div>
+    </div>
+  </div>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left"></h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="row item-name"> <div class="col-xs-12">{{item.p_name}}</div></div>
+          <div class="row item-price fw-bold"> <h3 class="col-xs-12">{{item.p_price | currency:'USD':true:'1.2-2'}}</h3></div>
+          <div class="row item-size">
+            <div class="col-xs-12 col-sm-6"><select class="ddlsize" [(ngModel)]="selectedSize">
+             <option *ngFor="let size of item.p_available_options.sizes" [ngValue]="size">{{size.name}}</option>
+            </select>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <input type="number" [(ngModel)]="selectedQty" min="0" max="100" class="txtQty" />
+            </div>
+          </div>
+
+        </div>
+        <div class="col-xs-6">
+          <img src="../../../assets/images/T{{imageIndex}}.jpg">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 edit-row">
+            <input type="button" value="EDIT" class="btn btn-primary" (click)="editProduct(item)" />
+        </div>
+      </div>
+    </div>
+    <ng-template>

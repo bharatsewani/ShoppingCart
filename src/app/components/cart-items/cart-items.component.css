@@ -1,0 +1,180 @@
+.table > thead > tr > th {
+    border-bottom: 4px solid #ddd;
+}
+
+.table > thead > tr {
+    color: #8c8383;
+}
+
+.table > tbody > tr > td {
+    padding: 25px;
+}
+
+.table {
+    border-top: 1px solid #ddd;
+    border-bottom: 4px solid #ddd;
+}
+
+.item-desc {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #696767;
+}
+
+.item-style {
+    font-size: 13px;
+    color: #8c8383;
+}
+
+.item-color {
+    font-size: 13px;
+    color: #8c8383;
+    padding-bottom: 50px;
+}
+
+.links a {
+    color: #8c8383;
+    text-decoration: none;
+}
+
+.section-help {
+    list-style: none;
+}
+
+.section-help a, .section-help li {
+    color: #8c8383;
+}
+
+.section-help li {
+    padding-bottom: 10px;
+}
+
+.amount-section, .checkout-section {
+    color: #8c8383;
+}
+
+.section-apply-coupan {
+    padding-bottom: 10px;
+    border-bottom: 4px solid #ddd;
+}
+
+.section-subtotal, .section-promocode, .section-estimated-total {
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.section-promocode {
+    border-bottom: 2px solid #DEDEDE;
+    padding-bottom: 10px;
+}
+
+.section-estimated-total {
+    border-bottom: 4px solid #ddd;
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.amount-section {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-checkout {
+    margin-left: 10px;
+}
+
+.checkout-section {
+    margin-bottom: 10px;
+}
+
+@media(max-width:768px) {
+    .section-apply-coupan, .promtion-code-entry {
+        text-align: center;
+        padding: 15px;
+    }
+
+    .divCheckout, .divContShopping {
+        text-align:center;
+    }
+
+    .divCheckout input {
+            width: 80%;
+            margin: 10px;
+    }
+}
+
+.table-contents .product {
+    padding: 10px;
+    border-bottom: 2px solid #DEDEDE;
+}
+
+.table-header {
+    padding: 10px;
+    border-bottom: 4px solid #ddd;
+    font-weight: bold;
+    color: #8c8383;
+}
+
+.links-xs {
+    padding: 10px;
+}
+
+.links a, .links-xs a {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.card-header {
+    padding: 10px;
+}
+
+.no-of-items {
+    margin-top: 21px;
+    font-weight: bold;
+    color: #8c8383;
+}
+
+.btn-apply {
+    background-color: white;
+    color: #8c8383;
+    border-color: #8c8383;
+}
+
+input[type="button"] {
+    border-radius: 0px;
+}
+
+.txtApplyCoupan {
+    height: 33px;
+}
+
+.section-total {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.modal-header{
+    border-bottom:none;
+}
+
+.item-name, .item-size, .item-price{
+    padding:10px;
+    color: #8c8383;
+}
+
+.item-name{
+ font-size : 19px;
+}
+
+.txtQty{
+    width:50%;
+}
+
+.ddlsize {
+    height:26px;
+}
+
+.edit-row{
+    padding:20px;
+}
